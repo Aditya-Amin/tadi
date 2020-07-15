@@ -65,7 +65,7 @@ $data = retrive_result($examinee_id);
     <?php if($data != false) : ?>
     <?php foreach($data as $item) : ?>
     <div class="results-box">
-        <div class="student-info">
+        <div class="student-info" style="text-align: center; padding-top:70px">
             <h3 class="student-name"><?php echo $item['first_name'] . ' ' . $item['last_name']; ?></h3>
             <a href="student-details.php?id=<?php echo $item['examinee_id']; ?>">See Details</a>
         </div>

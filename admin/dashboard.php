@@ -107,10 +107,12 @@ $total_passed = $result->fetch_assoc();
                     <div class="card-wrapper" style="margin-top: 30px;">
                         <div class="card-item wild widget">
                             <div class="card-top-items bg-green">
+                                <a href="instructions.php">
                                 <div class="card-contents">
                                     <h2>Set</h2>
                                     <p>Instructions</p>
                                 </div>
+                                </a>
                             </div>
                             <div class="card-divider"></div>
                             <a class="details bg-green" href="instructions.php">Show All ...</a>
@@ -118,10 +120,12 @@ $total_passed = $result->fetch_assoc();
 
                         <div class="card-item wild widget">
                             <div class="card-top-items bg-orange">
+                                <a href="add-topic.php">
                                 <div class="card-contents">
                                     <h2>Set</h2>
                                     <p>Topics</p>
                                 </div>
+                                </a>
                             </div>
                             <div class="card-divider"></div>
                             <a class="details bg-orange" href="topics.php">Show All ...</a>
@@ -129,10 +133,12 @@ $total_passed = $result->fetch_assoc();
 
                         <div class="card-item wild widget">
                             <div class="card-top-items bg-red">
+                                <a href="add-question.php">
                                 <div class="card-contents">
                                     <h2>Set</h2>
                                     <p>Questions</p>
                                 </div>
+                                </a>
                             </div>
                             <div class="card-divider"></div>
                             <a class="details bg-red" href="questions.php">Show All ...</a>
