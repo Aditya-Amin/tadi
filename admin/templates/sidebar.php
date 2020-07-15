@@ -17,14 +17,14 @@
         </li>
         <?php endif; ?>
         <li>
-            <a href="#" class="dropdown">
+            <a href="registered-lists.php" class="dropdown">
             <i class="far fa-folder"></i>
                 Report Generate
             </a>
         </li>
 
         <li>
-            <a href="#" class="dropdown">
+            <a href="change-password.php" class="dropdown">
                 <i class="fas fa-cogs"></i>
                 Settings
             </a>

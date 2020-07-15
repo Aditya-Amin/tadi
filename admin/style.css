@@ -692,6 +692,11 @@ h4.card-title {
     justify-content: center;
 }
 
+.card-item.wild.widget .card-top-items:hover{
+    box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.5);
+    transition: 0.3s all;
+}
+
 .card-item.wild.widget .card-contents{
     text-transform: uppercase;
 }
