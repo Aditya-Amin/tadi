@@ -34,9 +34,9 @@
         <ul id="topics-wrapper">
             <?php if(topics() != null) { foreach(topics() as $item) : ?>
             <li>
-                <p href="#" class="magic-topic"> <?php echo $item['title']; ?> </p>
+                <p class="magic-topic" id="read-topic-<?php echo $item['id']?>"> <?php echo $item['title']; ?> </p>
                 <div class="topic-popup">
-                    <span class="close-topic" data-id="<?php echo $item['id']; ?>">X</span>
+                    <span @click="close($event)" class="close-topic" data-id="<?php echo $item['id']; ?>">X</span>
                     <div class="popup-contents">
                         <?php echo $item['content']; ?>
                     </div>
@@ -50,7 +50,9 @@
     </div>
     <!-- topics end -->
     <script src="assets/js/jquery.min.js"></script>
-
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
     <!-- custom script -->
     <script>
         $(document).ready(function () {
@@ -82,73 +84,75 @@
             function isScrollable(el){
                 return $(el)[0].scrollWidth > $(el)[0].clientWidth || $(el)[0].scrollHeight > $(el)[0].clientHeight;
             };
-
-
-            // close the topic popup
-
-            $('.close-topic').click(function (e) {
-                e.preventDefault();
-                $('.topic-popup').removeClass('show-popup');
-                $('html, body').removeClass('overflow-control');
-                const topic_id = $(this).data('id');
-                setLocalTopics(topic_id);
-                $(this).parent().parent().find('.magic-topic').addClass('topic-disable');
-                checkReadTopics();
-            })
-
-
-            // store topics id in local storage
-            function setLocalTopics(id = '') {
-                let topics = [];
-                let json = JSON.parse(localStorage.getItem('topics'));
-                if (json != null) {
-                    topics = json;
-                    if (!topics.includes(id)) {
-                        topics.push(id);
-                    }
-                    localStorage.setItem('topics', JSON.stringify(topics));
-                } else {
-                    topics.push(id);
-                    localStorage.setItem('topics', JSON.stringify(topics));
-                }
-            }
-
-
-            // set topics disable which already read
-            function setTopicDisable() {
-                let topics_read = JSON.parse(localStorage.getItem('topics'));
-                if( topics_read != null){
-                    let topics_ids = document.querySelectorAll('.close-topic');
-                    topics_ids.forEach(function (item) {
-                        if (topics_read.includes(parseInt(item.getAttribute('data-id')))) {
-                            item.parentNode.parentNode.children[0].className += ' topic-disable';
-                        }
-                    })
-                }
-            }
-            setTopicDisable();
-
-
-            // check if all topics read and Visiable the button to proceed
-
-            function checkReadTopics() {
-                let all_topics = document.querySelectorAll('.magic-topic');
-                let all_read_topics = document.querySelectorAll('.topic-disable');
-                console.log(all_topics.length);
-
-                if (all_topics.length <= 0) {
-                    $('.proceed-btn').removeClass('show-popup');
-                }else if(all_topics.length == all_read_topics.length){
-                    $('.proceed-btn').addClass('show-popup');
-                }
-            }
-
-            checkReadTopics();
-
-
+            
         })
     </script>
+    <script>
+         const topicapp = new Vue({
+             el: "#topics-wrapper",
+             data:{
 
+             },
+             methods:{
+                 close:function(e){
+                    e.preventDefault();
+                    let topic_id = $(e.target).data('id');
+                    $(e.target).removeClass('show-popup');
+                    $('.topic-popup').removeClass('show-popup');
+                    $('html, body').removeClass('overflow-control');
+                    $("#read-topic-"+topic_id).addClass("topic-disable");
+                    this.setLocalTopics(topic_id);
+                    this.checkReadTopics();
+                 },
+
+                 setLocalTopics:function(id = ''){
+                    let topics = [];
+                    let json = JSON.parse(localStorage.getItem('topics'));
+                    if (json != null) {
+                        topics = json;
+                        if (!topics.includes(id)) {
+                            topics.push(id);
+                        }
+                        localStorage.setItem('topics', JSON.stringify(topics));
+                    } else {
+                        topics.push(id);
+                        localStorage.setItem('topics', JSON.stringify(topics));
+                    }
+                 },
+
+                 checkReadTopics:function(){
+                    let all_topics = document.querySelectorAll('.magic-topic');
+                    let topics_read = JSON.parse(localStorage.getItem('topics'));
+                    console.log(all_topics.length, topics_read.length);
+                    if (all_topics.length <= 0) {
+                        $('.proceed-btn').removeClass('show-popup');
+                    }else if(all_topics.length == topics_read.length){
+                        $('.proceed-btn').addClass('show-popup');
+                    }
+                 },
+
+                 setTopicDisable:function(){
+                    let topics_read = JSON.parse(localStorage.getItem('topics'));
+                    if( topics_read != null){
+                        let topics_ids = document.querySelectorAll('.close-topic');
+                        topics_ids.forEach(function (item) {
+                            if (topics_read.includes(parseInt(item.getAttribute('data-id')))) {
+                                item.parentNode.parentNode.children[0].className += ' topic-disable';
+                            }
+                        })
+                    }
+                 }
+
+             },
+
+             created(){
+                // check if all topics read and Visiable the button to proceed
+                this.checkReadTopics();
+                // set topics disable which already read
+                this.setTopicDisable();
+             }
+         })
+    </script>
 </body>
 
 </html>

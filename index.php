@@ -25,11 +25,11 @@
                 <h1 class="section-title">
                     TRAINING OBJECTIVE
                 </h1>
-                <p class="section-content">
+                <!-- <p class="section-content">
                     The following is section of articles of FibroScan and CAP
                     publish by the different gastroenterologists and hepatologists of
                     Canada and abroad.
-                </p>
+                </p> -->
             </div>
         </div>
     </div>
@@ -88,8 +88,9 @@
                 loop: true,
                 nav: false,
                 dots: true,
+                smartSpeed: 1000, 
                 autoplay: true,
-                autoplayTimeout: 2000,
+                autoplayTimeout: 6000,
                 responsive: {
                     0: {
                         items: 1

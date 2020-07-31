@@ -328,7 +328,7 @@ table {
     color: var(--text-light);
     position: absolute;
     top: 50px;
-    right: 80px;
+    right: 212px;
     z-index: 9999999999999;
     font-weight: 800;
     font-size: 15px;
@@ -388,7 +388,7 @@ table {
     padding: 20px 35px;
     height: 95vh;
     overflow-y: auto;
-    width: 95%;
+    width: 76%;
     max-width: 1260px;
     margin: 0 auto;
     margin-top: 20px;
