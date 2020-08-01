@@ -98,42 +98,42 @@
 
                         <?php if($choice_1 != null) : ?>
                         <li>
-                            <input type="radio" name="<?php echo "choice_".$c; ?>" value="<?php echo $choice_1; ?>" class="answer">
+                            <input type="radio" name="<?php echo "choice_".$c; ?>" value="<?php echo $choice_1; ?>" class="answer" data-id="<?php echo $c; ?>">
                             <label><?php echo $choice_1; ?></label>
                         </li>
                         <?php endif; ?>
 
                         <?php if($choice_2 != null) : ?>
                         <li>
-                            <input type="radio" name="<?php echo "choice_".$c; ?>" value="<?php echo $choice_2; ?>" class="answer">
+                            <input type="radio" name="<?php echo "choice_".$c; ?>" value="<?php echo $choice_2; ?>" class="answer" data-id="<?php echo $c; ?>">
                             <label><?php echo $choice_2; ?></label>
                         </li>
                         <?php endif; ?>
 
                         <?php if($choice_3 != null) : ?>
                         <li>
-                            <input type="radio" name="<?php echo "choice_".$c; ?>" value="<?php echo $choice_3; ?>" class="answer">
+                            <input type="radio" name="<?php echo "choice_".$c; ?>" value="<?php echo $choice_3; ?>" class="answer" data-id="<?php echo $c; ?>">
                             <label><?php echo $choice_3; ?></label>
                         </li>
                         <?php endif; ?>
 
                         <?php if($choice_4 != null) : ?>
                         <li>
-                            <input type="radio" name="<?php echo "choice_".$c; ?>" value="<?php echo $choice_4; ?>" class="answer">
+                            <input type="radio" name="<?php echo "choice_".$c; ?>" value="<?php echo $choice_4; ?>" class="answer" data-id="<?php echo $c; ?>">
                             <label><?php echo $choice_4; ?></label>
                         </li>
                         <?php endif; ?>
 
                         <?php if($choice_5 != null) : ?>
                         <li>
-                            <input type="radio" name="<?php echo "choice_".$c; ?>" value="<?php echo $choice_5; ?>" class="answer">
+                            <input type="radio" name="<?php echo "choice_".$c; ?>" value="<?php echo $choice_5; ?>" class="answer" data-id="<?php echo $c; ?>">
                             <label><?php echo $choice_5; ?></label>
                         </li>
                         <?php endif; ?>
 
                         <?php if($choice_6 != null) : ?>
                         <li>
-                            <input type="radio" name="<?php echo "choice_".$c; ?>" value="<?php echo $choice_6; ?>" class="answer">
+                            <input type="radio" name="<?php echo "choice_".$c; ?>" value="<?php echo $choice_6; ?>" class="answer" data-id="<?php echo $c; ?>">
                             <label><?php echo $choice_6; ?></label>
                         </li>
                         <?php endif; ?>
@@ -201,7 +201,7 @@
                         for( ans of answered ){
                        
                             if( ques.getAttribute('data-id') == ans.id ){
-                                $('input:radio[value='+ans.answer+']').prop('checked', true);
+                                $('input:radio[value="'+ans.answer+'"]').prop('checked', true);
                             }
                         }
                     }
