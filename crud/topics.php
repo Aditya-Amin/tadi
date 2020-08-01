@@ -7,7 +7,7 @@ $conn = database();
 
 function topics() {
     global $conn;
-    $sql = "select * from topics order by id desc"; /* query: retriving topics list */
+    $sql = "select * from topics order by id asc"; /* query: retriving topics list */
     $result = $conn->query($sql);
     if($result->num_rows > 0) {
         $data = array();
